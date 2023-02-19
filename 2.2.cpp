@@ -24,7 +24,7 @@ void printMatrix(int matrix[][N]) {
 
 void swapMaxDiagonal(int matrix[][N]) {
     int maxDiag = matrix[0][0];
-    int maxI = 0, maxJ = 0, crossI = 0, crossJ = N - 1;
+    int maxI = 0, maxJ = 0, center = matrix[N / 2][N / 2];
     for (int i = 0; i < N; i++) {
         if (matrix[i][i] > maxDiag) {
             maxDiag = matrix[i][i];
@@ -32,15 +32,14 @@ void swapMaxDiagonal(int matrix[][N]) {
         }
         if (matrix[i][N - i - 1] > maxDiag) {
             maxDiag = matrix[i][N - i - 1];
-            crossI = i;
-            crossJ = N - i - 1;
+            maxI = i;
+            maxJ = N - i - 1;
         }
     }
-    //Swap elements matrix[maxI][maxJ] and matrix[crossI][crossJ]
-    matrix[maxI][maxJ] = matrix[maxJ][maxJ] ^ matrix[crossI][crossJ];
-    matrix[crossI][crossJ] = matrix[maxI][maxJ] ^ matrix[crossI][crossJ];
-    matrix[maxI][maxJ] = matrix[maxI][maxJ] ^ matrix[crossI][crossJ];
+    matrix[N / 2][N / 2] = matrix[maxI][maxJ];
+    matrix[maxI][maxJ] = center;
 }
+
 
 int main() {
     int matrix[N][N];
