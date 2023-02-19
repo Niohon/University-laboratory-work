@@ -1,1 +1,1 @@
-# University-laboratory-work-on-C-
+# University-laboratory-work-on-C++
